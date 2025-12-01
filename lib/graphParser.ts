@@ -48,10 +48,10 @@ function getNodeSize(type: string): number {
  */
 function generateNodePositions(nodes: GraphNode[], edges: GraphEdge[]): GraphNode[] {
   const positionedNodes = [...nodes];
-  const iterations = 100;
-  const repulsion = 50;
-  const attraction = 0.01;
-  const damping = 0.9;
+  const iterations = 150;
+  const repulsion = 100;
+  const attraction = 0.015;
+  const damping = 0.85;
 
   // Initialize velocities
   const velocities = nodes.map(() => ({ x: 0, y: 0, z: 0 }));
@@ -143,7 +143,7 @@ export function parseManifestToGraph(manifestEntries: ResourceManifestEntry[]): 
       label: domain,
       type: 'domain',
       category: domain,
-      position: [Math.random() * 20 - 10, Math.random() * 20 - 10, Math.random() * 20 - 10],
+      position: [Math.random() * 40 - 20, Math.random() * 40 - 20, Math.random() * 40 - 20],
       color: getColorForDomain(domain),
       size: getNodeSize('domain'),
       metadata: { domain },
@@ -160,7 +160,7 @@ export function parseManifestToGraph(manifestEntries: ResourceManifestEntry[]): 
         label: entry.title || entry.id,
         type: 'resource',
         category: entry.category,
-        position: [Math.random() * 20 - 10, Math.random() * 20 - 10, Math.random() * 20 - 10],
+        position: [Math.random() * 40 - 20, Math.random() * 40 - 20, Math.random() * 40 - 20],
         color: getColorForDomain(entry.domain),
         size: getNodeSize('resource'),
         metadata: {
@@ -192,7 +192,7 @@ export function parseManifestToGraph(manifestEntries: ResourceManifestEntry[]): 
           label: tag,
           type: 'tag',
           category: 'tag',
-          position: [Math.random() * 20 - 10, Math.random() * 20 - 10, Math.random() * 20 - 10],
+          position: [Math.random() * 40 - 20, Math.random() * 40 - 20, Math.random() * 40 - 20],
           color: '#00D9FF',
           size: getNodeSize('tag'),
           metadata: { tags: [tag] },

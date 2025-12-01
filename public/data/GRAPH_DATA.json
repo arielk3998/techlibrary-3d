@@ -1,0 +1,1525 @@
+{
+  "nodes": [
+    {
+      "id": "89e7f953e79ef436",
+      "label": "**Today's Global Political Environment!![[Ai_Gen_Image_Global_politics.jpg]]**",
+      "type": "concept",
+      "position": [
+        -15.6,
+        -16.8,
+        -3.1999831593404626
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 2,
+      "metadata": {
+        "originalId": "89e7f953e79ef436",
+        "width": 460,
+        "height": 500,
+        "text": "**Today's Global Political Environment!![[Ai_Gen_Image_Global_politics.jpg]]**"
+      }
+    },
+    {
+      "id": "34c6681bd158551e",
+      "label": "**United States of America (U.S.A)**",
+      "type": "concept",
+      "position": [
+        5.02,
+        -25.26,
+        -4.230723220891168
+      ],
+      "category": "#447ef3",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "34c6681bd158551e",
+        "width": 162,
+        "height": 60,
+        "text": "**United States of America (U.S.A)**"
+      }
+    },
+    {
+      "id": "1e40b8e9f5b21a03",
+      "label": "**El Salvador**",
+      "type": "concept",
+      "position": [
+        5.02,
+        -23.26,
+        -3.7632237279405034
+      ],
+      "category": "#a7812f",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "1e40b8e9f5b21a03",
+        "width": 126,
+        "height": 60,
+        "text": "**El Salvador**"
+      }
+    },
+    {
+      "id": "140dba05a5790ce0",
+      "label": "Americas",
+      "type": "concept",
+      "position": [
+        -2.8,
+        -22.16,
+        -1.800642767928573
+      ],
+      "category": "#0400ff",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "140dba05a5790ce0",
+        "width": 111,
+        "height": 60,
+        "text": "Americas"
+      }
+    },
+    {
+      "id": "9f6b176bbc7634a9",
+      "label": "**Mexico**",
+      "type": "concept",
+      "position": [
+        5.02,
+        -21.26,
+        -0.5600139503102008
+      ],
+      "category": "3",
+      "color": "#45B7D1",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "9f6b176bbc7634a9",
+        "width": 99,
+        "height": 60,
+        "text": "**Mexico**"
+      }
+    },
+    {
+      "id": "fff052834647f51a",
+      "label": "**Canada**",
+      "type": "concept",
+      "position": [
+        5.02,
+        -19.26,
+        -0.26585298824910275
+      ],
+      "category": "1",
+      "color": "#FF6B6B",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "fff052834647f51a",
+        "width": 100,
+        "height": 60,
+        "text": "**Canada**"
+      }
+    },
+    {
+      "id": "85bf7ead6043b7dc",
+      "label": "**Saudi Arabia**",
+      "type": "concept",
+      "position": [
+        -38.54,
+        -2.46,
+        -3.9955805932046418
+      ],
+      "category": "#eebb4f",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "85bf7ead6043b7dc",
+        "width": 138,
+        "height": 60,
+        "text": "**Saudi Arabia**"
+      }
+    },
+    {
+      "id": "8143ac1b936473c4",
+      "label": "**Yemen**",
+      "type": "concept",
+      "position": [
+        -38.54,
+        -0.46,
+        3.474498654057756
+      ],
+      "category": "1",
+      "color": "#FF6B6B",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "8143ac1b936473c4",
+        "width": 95,
+        "height": 60,
+        "text": "**Yemen**"
+      }
+    },
+    {
+      "id": "02109b130b9f27dd",
+      "label": "**Iraq**",
+      "type": "concept",
+      "position": [
+        -38.54,
+        1.54,
+        3.7735165742668286
+      ],
+      "category": "#000000",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "02109b130b9f27dd",
+        "width": 75,
+        "height": 60,
+        "text": "**Iraq**"
+      }
+    },
+    {
+      "id": "8e4aa0e791229022",
+      "label": "**Iran**",
+      "type": "concept",
+      "position": [
+        -38.54,
+        3.54,
+        2.2665482872700853
+      ],
+      "category": "4",
+      "color": "#96CEB4",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "8e4aa0e791229022",
+        "width": 75,
+        "height": 60,
+        "text": "**Iran**"
+      }
+    },
+    {
+      "id": "430facb4080f5bbc",
+      "label": "**Afghanistan**",
+      "type": "concept",
+      "position": [
+        -38.54,
+        5.54,
+        2.254195079024859
+      ],
+      "category": "2",
+      "color": "#4ECDC4",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "430facb4080f5bbc",
+        "width": 134,
+        "height": 60,
+        "text": "**Afghanistan**"
+      }
+    },
+    {
+      "id": "570ffc86eb593023",
+      "label": "**Palestine/ Israel**",
+      "type": "concept",
+      "position": [
+        -38.54,
+        -6.46,
+        1.4727278333282694
+      ],
+      "category": "4",
+      "color": "#96CEB4",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "570ffc86eb593023",
+        "width": 161,
+        "height": 60,
+        "text": "**Palestine/ Israel**"
+      }
+    },
+    {
+      "id": "00b8d7829d9f0438",
+      "label": "Armenia",
+      "type": "concept",
+      "position": [
+        -38.54,
+        -4.46,
+        -2.801824639259045
+      ],
+      "category": "#143de1",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "00b8d7829d9f0438",
+        "width": 106,
+        "height": 60,
+        "text": "Armenia"
+      }
+    },
+    {
+      "id": "11e9491440961530",
+      "label": "**Russia**",
+      "type": "concept",
+      "position": [
+        -2.8,
+        -3,
+        -0.21058690068526964
+      ],
+      "category": "5",
+      "color": "#FFEAA7",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "11e9491440961530",
+        "width": 92,
+        "height": 60,
+        "text": "**Russia**"
+      }
+    },
+    {
+      "id": "60bf2b25d976be01",
+      "label": "**Asia**",
+      "type": "concept",
+      "position": [
+        -2.8,
+        -12.4,
+        4.464760648887957
+      ],
+      "category": "1",
+      "color": "#FF6B6B",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "60bf2b25d976be01",
+        "width": 77,
+        "height": 50,
+        "text": "**Asia**"
+      }
+    },
+    {
+      "id": "53979a2f16216873",
+      "label": "**China**",
+      "type": "concept",
+      "position": [
+        2,
+        -16.4,
+        -3.5244635628996246
+      ],
+      "category": "1",
+      "color": "#FF6B6B",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "53979a2f16216873",
+        "width": 88,
+        "height": 60,
+        "text": "**China**"
+      }
+    },
+    {
+      "id": "e37547abb6ac2c96",
+      "label": "**India**",
+      "type": "concept",
+      "position": [
+        2,
+        -14.4,
+        4.333194761497872
+      ],
+      "category": "2",
+      "color": "#4ECDC4",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "e37547abb6ac2c96",
+        "width": 83,
+        "height": 60,
+        "text": "**India**"
+      }
+    },
+    {
+      "id": "79009b439567fb6f",
+      "label": "**Japan**",
+      "type": "concept",
+      "position": [
+        2,
+        -12.4,
+        -4.327794489851358
+      ],
+      "category": "3",
+      "color": "#45B7D1",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "79009b439567fb6f",
+        "width": 88,
+        "height": 60,
+        "text": "**Japan**"
+      }
+    },
+    {
+      "id": "0efd0e2cc8c40f0a",
+      "label": "**South Korea**",
+      "type": "concept",
+      "position": [
+        2,
+        -10.4,
+        0.5411665980081732
+      ],
+      "category": "5",
+      "color": "#FFEAA7",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "0efd0e2cc8c40f0a",
+        "width": 135,
+        "height": 60,
+        "text": "**South Korea**"
+      }
+    },
+    {
+      "id": "973f38a7bbff992a",
+      "label": "**North** Korea",
+      "type": "concept",
+      "position": [
+        2,
+        -8.4,
+        -3.849481932783476
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "973f38a7bbff992a",
+        "width": 135,
+        "height": 60,
+        "text": "**North** Korea"
+      }
+    },
+    {
+      "id": "8ec86cad183f9218",
+      "label": "Sudan",
+      "type": "concept",
+      "position": [
+        -38.54,
+        -14.46,
+        -1.366840835315617
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "8ec86cad183f9218",
+        "width": 91,
+        "height": 60,
+        "text": "Sudan"
+      }
+    },
+    {
+      "id": "aab1c2602edb9aaa",
+      "label": "South Sudan",
+      "type": "concept",
+      "position": [
+        -38.54,
+        -12.46,
+        3.325438002793504
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "aab1c2602edb9aaa",
+        "width": 136,
+        "height": 60,
+        "text": "South Sudan"
+      }
+    },
+    {
+      "id": "73962bed50e15a4a",
+      "label": "Ethiopia",
+      "type": "concept",
+      "position": [
+        -38.54,
+        -10.46,
+        2.81164683332449
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "73962bed50e15a4a",
+        "width": 104,
+        "height": 60,
+        "text": "Ethiopia"
+      }
+    },
+    {
+      "id": "adb81007b6325556",
+      "label": "**Democratic Republic of Congo (DRC)**",
+      "type": "concept",
+      "position": [
+        -38.54,
+        -8.46,
+        -4.739987754947865
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "adb81007b6325556",
+        "width": 196,
+        "height": 60,
+        "text": "**Democratic Republic of Congo (DRC)**"
+      }
+    },
+    {
+      "id": "1c46171ba436bced",
+      "label": "**Europe**",
+      "type": "concept",
+      "position": [
+        -28.26,
+        -19.26,
+        -4.111552425082743
+      ],
+      "category": "2",
+      "color": "#4ECDC4",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "1c46171ba436bced",
+        "width": 98,
+        "height": 60,
+        "text": "**Europe**"
+      }
+    },
+    {
+      "id": "c01ef61c5ed89c12",
+      "label": "**United Kingdom (U.K)**",
+      "type": "concept",
+      "position": [
+        -38.54,
+        -22.46,
+        -3.2623288202276557
+      ],
+      "category": "#050505",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "c01ef61c5ed89c12",
+        "width": 206,
+        "height": 60,
+        "text": "**United Kingdom (U.K)**"
+      }
+    },
+    {
+      "id": "4c5dbabeb3630819",
+      "label": "**Ukraine**",
+      "type": "concept",
+      "position": [
+        -38.54,
+        -20.46,
+        4.091104057041484
+      ],
+      "category": "3",
+      "color": "#45B7D1",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "4c5dbabeb3630819",
+        "width": 102,
+        "height": 60,
+        "text": "**Ukraine**"
+      }
+    },
+    {
+      "id": "61cbe14d8a1291b9",
+      "label": "**France**",
+      "type": "concept",
+      "position": [
+        -38.54,
+        -18.46,
+        0.9529475710982087
+      ],
+      "category": "#001eff",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "61cbe14d8a1291b9",
+        "width": 94,
+        "height": 60,
+        "text": "**France**"
+      }
+    },
+    {
+      "id": "4457725eb64ff0c7",
+      "label": "**Germany**",
+      "type": "concept",
+      "position": [
+        -38.54,
+        -16.46,
+        0.6826065557827521
+      ],
+      "category": "4",
+      "color": "#96CEB4",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "4457725eb64ff0c7",
+        "width": 112,
+        "height": 60,
+        "text": "**Germany**"
+      }
+    },
+    {
+      "id": "87e7839fcaf2745e",
+      "label": "**Middle East**",
+      "type": "concept",
+      "position": [
+        -28.26,
+        -0.46,
+        -2.1136245086272742
+      ],
+      "category": "6",
+      "color": "#DDA15E",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "87e7839fcaf2745e",
+        "width": 131,
+        "height": 60,
+        "text": "**Middle East**"
+      }
+    },
+    {
+      "id": "c371283038df252b",
+      "label": "**Africa**",
+      "type": "concept",
+      "position": [
+        -28.26,
+        -11.4,
+        -4.036845265838124
+      ],
+      "category": "4",
+      "color": "#96CEB4",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "c371283038df252b",
+        "width": 89,
+        "height": 60,
+        "text": "**Africa**"
+      }
+    },
+    {
+      "id": "c60e5651e5fb3436",
+      "label": "**Spain**",
+      "type": "concept",
+      "position": [
+        -38.54,
+        -24.46,
+        -2.08378421179805
+      ],
+      "category": "1",
+      "color": "#FF6B6B",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "c60e5651e5fb3436",
+        "width": 87,
+        "height": 60,
+        "text": "**Spain**"
+      }
+    },
+    {
+      "id": "7b7a0ef442154163",
+      "label": "Italy",
+      "type": "concept",
+      "position": [
+        -38.54,
+        -26.1,
+        2.392629307285821
+      ],
+      "category": "#14b408",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "7b7a0ef442154163",
+        "width": 76,
+        "height": 60,
+        "text": "Italy"
+      }
+    },
+    {
+      "id": "7ed521f4440184fa",
+      "label": "**WAR: \"What is it good for? Absolutely nothing!\"**",
+      "type": "concept",
+      "position": [
+        -13.5,
+        -19.26,
+        -0.022632439864400666
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "7ed521f4440184fa",
+        "width": 250,
+        "height": 60,
+        "text": "**WAR: \"What is it good for? Absolutely nothing!\"**"
+      }
+    },
+    {
+      "id": "95a39c4ca82fe0b6",
+      "label": "Wars of Independence",
+      "type": "concept",
+      "position": [
+        -9.32,
+        -22.16,
+        -0.6431941052987185
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "95a39c4ca82fe0b6",
+        "width": 205,
+        "height": 50,
+        "text": "Wars of Independence"
+      }
+    },
+    {
+      "id": "7b6aaa648173b478",
+      "label": "Revolutions",
+      "type": "concept",
+      "position": [
+        -12.28,
+        -22.16,
+        4.126411645006542
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "7b6aaa648173b478",
+        "width": 128,
+        "height": 50,
+        "text": "Revolutions"
+      }
+    },
+    {
+      "id": "60c626f0dae0f050",
+      "label": "World Wars",
+      "type": "concept",
+      "position": [
+        -15.24,
+        -22.16,
+        1.7322578022662904
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "60c626f0dae0f050",
+        "width": 128,
+        "height": 50,
+        "text": "World Wars"
+      }
+    },
+    {
+      "id": "69003c9889c3b880",
+      "label": "World War I (WWI)",
+      "type": "concept",
+      "position": [
+        -21.28,
+        -25.86,
+        0.6708250420010735
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "69003c9889c3b880",
+        "width": 178,
+        "height": 60,
+        "text": "World War I (WWI)"
+      }
+    },
+    {
+      "id": "22f13ca6608cf047",
+      "label": "World War II (WWII)",
+      "type": "concept",
+      "position": [
+        -16.58,
+        -25.86,
+        -0.025877644609275663
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "22f13ca6608cf047",
+        "width": 187,
+        "height": 60,
+        "text": "World War II (WWII)"
+      }
+    },
+    {
+      "id": "86c4cd65bed85880",
+      "label": "Housing",
+      "type": "concept",
+      "position": [
+        22,
+        -43.24,
+        -3.8422310918073843
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "86c4cd65bed85880",
+        "width": 105,
+        "height": 60,
+        "text": "Housing"
+      }
+    },
+    {
+      "id": "02463e81708d9c12",
+      "label": "**Arizona**",
+      "type": "concept",
+      "position": [
+        22,
+        -41.24,
+        -0.1971052959274182
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "02463e81708d9c12",
+        "width": 102,
+        "height": 60,
+        "text": "**Arizona**"
+      }
+    },
+    {
+      "id": "4f343a4b5dc4f5cd",
+      "label": "**California**",
+      "type": "concept",
+      "position": [
+        22,
+        -39.24,
+        4.065089892956697
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "4f343a4b5dc4f5cd",
+        "width": 116,
+        "height": 60,
+        "text": "**California**"
+      }
+    },
+    {
+      "id": "44f02412a4b8e621",
+      "label": "**New York**",
+      "type": "concept",
+      "position": [
+        22,
+        -37.24,
+        -2.2137226644402275
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "44f02412a4b8e621",
+        "width": 115,
+        "height": 60,
+        "text": "**New York**"
+      }
+    },
+    {
+      "id": "ee3752caa0500bf7",
+      "label": "**US Geopolitics**",
+      "type": "concept",
+      "position": [
+        14,
+        -37.22,
+        3.823068507960528
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "ee3752caa0500bf7",
+        "width": 152,
+        "height": 60,
+        "text": "**US Geopolitics**"
+      }
+    },
+    {
+      "id": "b454717e9f212f72",
+      "label": "**Texas**",
+      "type": "concept",
+      "position": [
+        22,
+        -35.24,
+        -4.39493100173798
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "b454717e9f212f72",
+        "width": 86,
+        "height": 60,
+        "text": "**Texas**"
+      }
+    },
+    {
+      "id": "f3d3c1424a4a117e",
+      "label": "**Federal Government**",
+      "type": "concept",
+      "position": [
+        14,
+        -31.18,
+        -0.9323709900064925
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "f3d3c1424a4a117e",
+        "width": 194,
+        "height": 60,
+        "text": "**Federal Government**"
+      }
+    },
+    {
+      "id": "96cc759f0426bf67",
+      "label": "**Florida**",
+      "type": "concept",
+      "position": [
+        22,
+        -33.24,
+        -1.6056284973167911
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "96cc759f0426bf67",
+        "width": 96,
+        "height": 62,
+        "text": "**Florida**"
+      }
+    },
+    {
+      "id": "78ecb52435a3b537",
+      "label": "**Politicians**",
+      "type": "concept",
+      "position": [
+        22,
+        -31.2,
+        1.7359108603829458
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "78ecb52435a3b537",
+        "width": 119,
+        "height": 60,
+        "text": "**Politicians**"
+      }
+    },
+    {
+      "id": "b791a1ff50a85754",
+      "label": "**Structure**",
+      "type": "concept",
+      "position": [
+        22,
+        -29.2,
+        -2.9581179524940837
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "b791a1ff50a85754",
+        "width": 113,
+        "height": 50,
+        "text": "**Structure**"
+      }
+    },
+    {
+      "id": "1f4c053d29b23690",
+      "label": "**Legislative (Congress)**",
+      "type": "concept",
+      "position": [
+        30,
+        -29.3,
+        2.1618428052588667
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "1f4c053d29b23690",
+        "width": 204,
+        "height": 60,
+        "text": "**Legislative (Congress)**"
+      }
+    },
+    {
+      "id": "b135a91dcfd4e763",
+      "label": "**Executive**",
+      "type": "concept",
+      "position": [
+        30,
+        -27.7,
+        -2.277275591012262
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "b135a91dcfd4e763",
+        "width": 114,
+        "height": 60,
+        "text": "**Executive**"
+      }
+    },
+    {
+      "id": "36752fbba6775ea3",
+      "label": "**Judicial**",
+      "type": "concept",
+      "position": [
+        30,
+        -26.1,
+        -1.138533874208778
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "36752fbba6775ea3",
+        "width": 100,
+        "height": 60,
+        "text": "**Judicial**"
+      }
+    },
+    {
+      "id": "1f9067508697b706",
+      "label": "Gross Domestic Product (GDP)",
+      "type": "concept",
+      "position": [
+        22,
+        -47.24,
+        1.6688079285361894
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "1f9067508697b706",
+        "width": 261,
+        "height": 60,
+        "text": "Gross Domestic Product (GDP)"
+      }
+    },
+    {
+      "id": "42ed233c9d94a40e",
+      "label": "Income",
+      "type": "concept",
+      "position": [
+        22,
+        -45.24,
+        -3.457024172487453
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "42ed233c9d94a40e",
+        "width": 99,
+        "height": 60,
+        "text": "Income"
+      }
+    },
+    {
+      "id": "7aa8154a80ea685f",
+      "label": "Federal Economics",
+      "type": "concept",
+      "position": [
+        14,
+        -45.22,
+        3.349029237957444
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "7aa8154a80ea685f",
+        "width": 178,
+        "height": 60,
+        "text": "Federal Economics"
+      }
+    },
+    {
+      "id": "671d5cdffd9ba677",
+      "label": "History",
+      "type": "concept",
+      "position": [
+        14,
+        -49.7,
+        2.660373701497047
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "671d5cdffd9ba677",
+        "width": 97,
+        "height": 60,
+        "text": "History"
+      }
+    },
+    {
+      "id": "27d342b892877203",
+      "label": "The \"Founding\" of America",
+      "type": "concept",
+      "position": [
+        22,
+        -53.7,
+        4.684387325772118
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "27d342b892877203",
+        "width": 237,
+        "height": 60,
+        "text": "The \"Founding\" of America"
+      }
+    },
+    {
+      "id": "b572f6fecc14774f",
+      "label": "Economic Systems",
+      "type": "concept",
+      "position": [
+        -12.88,
+        -3.62,
+        3.6342333954560306
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "b572f6fecc14774f",
+        "width": 176,
+        "height": 63,
+        "text": "Economic Systems"
+      }
+    },
+    {
+      "id": "8bbe8ac58de57ecc",
+      "label": "Capitalism",
+      "type": "concept",
+      "position": [
+        -14.8,
+        -0.2,
+        1.8873329213613754
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "8bbe8ac58de57ecc",
+        "width": 120,
+        "height": 60,
+        "text": "Capitalism"
+      }
+    },
+    {
+      "id": "4c3416f2826ac16f",
+      "label": "Sicialism",
+      "type": "concept",
+      "position": [
+        -12,
+        -0.2,
+        0.5338595851772006
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "4c3416f2826ac16f",
+        "width": 107,
+        "height": 60,
+        "text": "Sicialism"
+      }
+    },
+    {
+      "id": "c62531109d92bf67",
+      "label": "Comunism",
+      "type": "concept",
+      "position": [
+        -9.46,
+        -0.2,
+        1.7072172011481968
+      ],
+      "category": "default",
+      "color": "#888888",
+      "size": 1.2,
+      "metadata": {
+        "originalId": "c62531109d92bf67",
+        "width": 122,
+        "height": 60,
+        "text": "Comunism"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "89e7f953e79ef436",
+      "target": "140dba05a5790ce0",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "89e7f953e79ef436",
+      "target": "11e9491440961530",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "140dba05a5790ce0",
+      "target": "34c6681bd158551e",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "140dba05a5790ce0",
+      "target": "1e40b8e9f5b21a03",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "140dba05a5790ce0",
+      "target": "9f6b176bbc7634a9",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "140dba05a5790ce0",
+      "target": "fff052834647f51a",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "89e7f953e79ef436",
+      "target": "1c46171ba436bced",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "89e7f953e79ef436",
+      "target": "87e7839fcaf2745e",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "1c46171ba436bced",
+      "target": "4c5dbabeb3630819",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "1c46171ba436bced",
+      "target": "61cbe14d8a1291b9",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "1c46171ba436bced",
+      "target": "4457725eb64ff0c7",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "87e7839fcaf2745e",
+      "target": "570ffc86eb593023",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "87e7839fcaf2745e",
+      "target": "85bf7ead6043b7dc",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "87e7839fcaf2745e",
+      "target": "8143ac1b936473c4",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "87e7839fcaf2745e",
+      "target": "02109b130b9f27dd",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "87e7839fcaf2745e",
+      "target": "8e4aa0e791229022",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "87e7839fcaf2745e",
+      "target": "430facb4080f5bbc",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "89e7f953e79ef436",
+      "target": "60bf2b25d976be01",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "60bf2b25d976be01",
+      "target": "53979a2f16216873",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "60bf2b25d976be01",
+      "target": "e37547abb6ac2c96",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "60bf2b25d976be01",
+      "target": "79009b439567fb6f",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "60bf2b25d976be01",
+      "target": "0efd0e2cc8c40f0a",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "60bf2b25d976be01",
+      "target": "973f38a7bbff992a",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "89e7f953e79ef436",
+      "target": "c371283038df252b",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "1c46171ba436bced",
+      "target": "c01ef61c5ed89c12",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "34c6681bd158551e",
+      "target": "7aa8154a80ea685f",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "34c6681bd158551e",
+      "target": "ee3752caa0500bf7",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "ee3752caa0500bf7",
+      "target": "44f02412a4b8e621",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "ee3752caa0500bf7",
+      "target": "4f343a4b5dc4f5cd",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "ee3752caa0500bf7",
+      "target": "02463e81708d9c12",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "ee3752caa0500bf7",
+      "target": "b454717e9f212f72",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "ee3752caa0500bf7",
+      "target": "96cc759f0426bf67",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "7aa8154a80ea685f",
+      "target": "42ed233c9d94a40e",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "7aa8154a80ea685f",
+      "target": "86c4cd65bed85880",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "7aa8154a80ea685f",
+      "target": "1f9067508697b706",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "34c6681bd158551e",
+      "target": "f3d3c1424a4a117e",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "f3d3c1424a4a117e",
+      "target": "b791a1ff50a85754",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "b791a1ff50a85754",
+      "target": "1f4c053d29b23690",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "b791a1ff50a85754",
+      "target": "b135a91dcfd4e763",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "b791a1ff50a85754",
+      "target": "36752fbba6775ea3",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "f3d3c1424a4a117e",
+      "target": "78ecb52435a3b537",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "87e7839fcaf2745e",
+      "target": "00b8d7829d9f0438",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "c371283038df252b",
+      "target": "8ec86cad183f9218",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "c371283038df252b",
+      "target": "73962bed50e15a4a",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "c371283038df252b",
+      "target": "adb81007b6325556",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "c371283038df252b",
+      "target": "aab1c2602edb9aaa",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "89e7f953e79ef436",
+      "target": "7ed521f4440184fa",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "7ed521f4440184fa",
+      "target": "60c626f0dae0f050",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "60c626f0dae0f050",
+      "target": "69003c9889c3b880",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "60c626f0dae0f050",
+      "target": "22f13ca6608cf047",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "34c6681bd158551e",
+      "target": "671d5cdffd9ba677",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "671d5cdffd9ba677",
+      "target": "27d342b892877203",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "1c46171ba436bced",
+      "target": "c60e5651e5fb3436",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "1c46171ba436bced",
+      "target": "7b7a0ef442154163",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "7ed521f4440184fa",
+      "target": "95a39c4ca82fe0b6",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "7ed521f4440184fa",
+      "target": "7b6aaa648173b478",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "89e7f953e79ef436",
+      "target": "b572f6fecc14774f",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "b572f6fecc14774f",
+      "target": "4c3416f2826ac16f",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "b572f6fecc14774f",
+      "target": "8bbe8ac58de57ecc",
+      "type": "reference",
+      "strength": 1
+    },
+    {
+      "source": "b572f6fecc14774f",
+      "target": "c62531109d92bf67",
+      "type": "reference",
+      "strength": 1
+    }
+  ]
+}

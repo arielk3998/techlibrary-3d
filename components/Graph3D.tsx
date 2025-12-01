@@ -67,18 +67,22 @@ function Node({ node, isSelected, isHighlighted, onClick, onHover }: NodeProps) 
         <meshStandardMaterial
           color={node.color}
           emissive={node.color}
-          emissiveIntensity={isSelected || hovered ? 0.5 : 0.2}
+          emissiveIntensity={isSelected || hovered ? 0.8 : 0.4}
           transparent
           opacity={opacity}
+          metalness={0.3}
+          roughness={0.4}
         />
       </mesh>
       {(isSelected || hovered || node.type === 'domain') && (
         <Text
-          position={[0, node.size + 0.5, 0]}
-          fontSize={0.5}
+          position={[0, node.size + 0.8, 0]}
+          fontSize={node.type === 'domain' ? 0.8 : 0.5}
           color="white"
           anchorX="center"
           anchorY="middle"
+          outlineWidth={0.1}
+          outlineColor="#000000"
         >
           {node.label}
         </Text>
@@ -104,17 +108,47 @@ function Edge({ edge, nodes, isHighlighted }: EdgeProps) {
     new THREE.Vector3(...targetNode.position),
   ];
 
-  const color = isHighlighted ? '#00D9FF' : '#444444';
-  const opacity = isHighlighted ? 0.8 : 0.2;
+  // Use source node color for the edge
+  const color = isHighlighted ? '#00D9FF' : sourceNode.color;
+  const opacity = isHighlighted ? 0.9 : 0.6;
+
+  // Calculate arrow position (80% along the line)
+  const direction = new THREE.Vector3()
+    .subVectors(
+      new THREE.Vector3(...targetNode.position),
+      new THREE.Vector3(...sourceNode.position)
+    )
+    .normalize();
+  
+  const arrowPos = new THREE.Vector3(...sourceNode.position).add(
+    direction.multiplyScalar(
+      new THREE.Vector3(...sourceNode.position).distanceTo(
+        new THREE.Vector3(...targetNode.position)
+      ) * 0.8
+    )
+  );
 
   return (
-    <Line
-      points={points}
-      color={color}
-      lineWidth={isHighlighted ? 2 : 1}
-      transparent
-      opacity={opacity}
-    />
+    <group>
+      <Line
+        points={points}
+        color={color}
+        lineWidth={isHighlighted ? 3 : 1.5}
+        transparent
+        opacity={opacity}
+      />
+      {/* Arrow head */}
+      <mesh position={arrowPos.toArray()}>
+        <coneGeometry args={[0.3, 0.6, 8]} />
+        <meshStandardMaterial
+          color={color}
+          emissive={color}
+          emissiveIntensity={0.3}
+          transparent
+          opacity={opacity}
+        />
+      </mesh>
+    </group>
   );
 }
 
@@ -150,19 +184,24 @@ function Graph3DScene({ nodes, edges }: Graph3DSceneProps) {
 
   return (
     <>
-      <PerspectiveCamera makeDefault position={[0, 0, 50]} />
+      <PerspectiveCamera makeDefault position={[0, 0, 80]} fov={60} />
       <OrbitControls
         enableDamping
         dampingFactor={0.05}
         rotateSpeed={0.5}
         zoomSpeed={0.8}
-        minDistance={10}
-        maxDistance={200}
+        minDistance={20}
+        maxDistance={300}
       />
 
-      <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} intensity={1} />
-      <pointLight position={[-10, -10, -10]} intensity={0.5} />
+      {/* Enhanced lighting for better visibility */}
+      <ambientLight intensity={0.8} />
+      <pointLight position={[50, 50, 50]} intensity={2} />
+      <pointLight position={[-50, -50, -50]} intensity={1} />
+      <pointLight position={[0, 50, 0]} intensity={1.5} color="#00D9FF" />
+      
+      {/* Grid helper for depth perception */}
+      <gridHelper args={[100, 20, '#333333', '#1a1a1a']} position={[0, -30, 0]} />
 
       {/* Render edges first (behind nodes) */}
       {edges.map((edge, idx) => (

@@ -39,25 +39,42 @@ export default function Home() {
   // Load data on mount
   useEffect(() => {
     setLoading(true);
-    loadResourceManifest()
-      .then((manifest: ResourceManifestEntry[]) => {
-        if (manifest && manifest.length > 0) {
-          const graph = parseManifestToGraph(manifest);
-          setGraphData(graph);
-        } else {
-          // Use mock data if manifest is not available
-          const mockGraph = generateMockGraph();
-          setGraphData(mockGraph);
+    
+    // Try to load real Obsidian graph data first
+    fetch('/data/GRAPH_DATA.json')
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
         }
+        throw new Error('No graph data found');
       })
-      .catch((err) => {
-        console.error('Error loading manifest:', err);
-        setError('Failed to load data. Using mock data.');
-        const mockGraph = generateMockGraph();
-        setGraphData(mockGraph);
-      })
-      .finally(() => {
+      .then((realGraphData: GraphData) => {
+        console.log('📊 Loaded real Obsidian data:', realGraphData.nodes.length, 'nodes');
+        setGraphData(realGraphData);
         setLoading(false);
+      })
+      .catch(() => {
+        // Fallback to manifest or mock data
+        loadResourceManifest()
+          .then((manifest: ResourceManifestEntry[]) => {
+            if (manifest && manifest.length > 0) {
+              const graph = parseManifestToGraph(manifest);
+              setGraphData(graph);
+            } else {
+              // Use mock data if manifest is not available
+              const mockGraph = generateMockGraph();
+              setGraphData(mockGraph);
+            }
+          })
+          .catch((err) => {
+            console.error('Error loading manifest:', err);
+            setError('Failed to load data. Using mock data.');
+            const mockGraph = generateMockGraph();
+            setGraphData(mockGraph);
+          })
+          .finally(() => {
+            setLoading(false);
+          });
       });
   }, [setGraphData, setLoading]);
 
@@ -85,9 +102,27 @@ export default function Home() {
 
   return (
     <div className="relative w-full h-screen bg-black overflow-hidden">
+      {/* Main Graph Visualization - Behind everything */}
+      <div className="absolute inset-0 w-full h-full">
+        {isLoading ? (
+          <div className="flex items-center justify-center h-full">
+            <div className="text-center">
+              <Loader2 className="w-16 h-16 text-cyan-400 animate-spin mx-auto mb-4" />
+              <p className="text-white text-lg">Loading TechLibrary Graph...</p>
+            </div>
+          </div>
+        ) : filteredGraph && filteredGraph.nodes.length > 0 ? (
+          <Graph3D nodes={filteredGraph.nodes} edges={filteredGraph.edges} />
+        ) : (
+          <div className="flex items-center justify-center h-full">
+            <p className="text-white text-lg">No nodes match your filters</p>
+          </div>
+        )}
+      </div>
+
       {/* Header */}
-      <div className="absolute top-0 left-0 right-0 z-20 bg-gradient-to-b from-black/80 to-transparent p-4">
-        <div className="flex items-center justify-between max-w-7xl mx-auto">
+      <div className="absolute top-0 left-0 right-0 z-20 bg-gradient-to-b from-black/80 to-transparent p-4 pointer-events-none">
+        <div className="flex items-center justify-between max-w-7xl mx-auto pointer-events-auto">
           <div className="flex items-center gap-3">
             <Box className="w-8 h-8 text-cyan-400" />
             <h1 className="text-2xl font-bold text-white">TechLibrary 3D</h1>
@@ -106,24 +141,6 @@ export default function Home() {
       {/* Search Bar */}
       <SearchBar />
 
-      {/* Main Graph Visualization */}
-      <div className="w-full h-full">
-        {isLoading ? (
-          <div className="flex items-center justify-center h-full">
-            <div className="text-center">
-              <Loader2 className="w-16 h-16 text-cyan-400 animate-spin mx-auto mb-4" />
-              <p className="text-white text-lg">Loading TechLibrary Graph...</p>
-            </div>
-          </div>
-        ) : filteredGraph && filteredGraph.nodes.length > 0 ? (
-          <Graph3D nodes={filteredGraph.nodes} edges={filteredGraph.edges} />
-        ) : (
-          <div className="flex items-center justify-center h-full">
-            <p className="text-white text-lg">No nodes match your filters</p>
-          </div>
-        )}
-      </div>
-
       {/* Content Viewer */}
       <ContentViewer />
 
@@ -132,7 +149,7 @@ export default function Home() {
 
       {/* Instructions Overlay */}
       {!isLoading && graphData && (
-        <div className="absolute bottom-4 left-4 z-10 bg-gray-900/90 backdrop-blur-sm border border-gray-700 rounded-lg p-3 max-w-xs text-sm text-gray-300">
+        <div className="absolute bottom-4 left-4 z-10 bg-gray-900/90 backdrop-blur-sm border border-gray-700 rounded-lg p-3 max-w-xs text-sm text-gray-300 pointer-events-none">
           <p className="font-semibold mb-1">Controls:</p>
           <ul className="space-y-1 text-xs">
             <li>• Click and drag to rotate</li>

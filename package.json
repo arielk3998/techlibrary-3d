@@ -6,8 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "setup": "node scripts/setup.js"
+    "lint": "eslint",
+    "setup": "node scripts/setup.js",
+    "import:obsidian": "node scripts/import-obsidian.js"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
