@@ -19,6 +19,7 @@ interface NodeProps {
 function Node({ node, isSelected, isHighlighted, onClick, onHover }: NodeProps) {
   const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = React.useState(false);
+  const { setEditingNode } = useGraphStore();
 
   useFrame((state) => {
     if (meshRef.current && (isSelected || hovered)) {
@@ -38,6 +39,11 @@ function Node({ node, isSelected, isHighlighted, onClick, onHover }: NodeProps) 
     return 0.7;
   }, [isSelected, isHighlighted, hovered]);
 
+  const handleDoubleClick = (e: any) => {
+    e.stopPropagation();
+    setEditingNode(node.id);
+  };
+
   return (
     <group position={node.position}>
       <mesh
@@ -46,6 +52,7 @@ function Node({ node, isSelected, isHighlighted, onClick, onHover }: NodeProps) 
           e.stopPropagation();
           onClick(node.id);
         }}
+        onDoubleClick={handleDoubleClick}
         onPointerOver={(e) => {
           e.stopPropagation();
           setHovered(true);
@@ -110,42 +117,43 @@ function Edge({ edge, nodes, isHighlighted }: EdgeProps) {
 
   // Use source node color for the edge
   const color = isHighlighted ? '#00D9FF' : sourceNode.color;
-  const opacity = isHighlighted ? 0.9 : 0.6;
+  const opacity = isHighlighted ? 0.9 : 0.5;
+  const lineWidth = isHighlighted ? 2.5 : 1.2;
 
-  // Calculate arrow position (80% along the line)
-  const direction = new THREE.Vector3()
-    .subVectors(
-      new THREE.Vector3(...targetNode.position),
-      new THREE.Vector3(...sourceNode.position)
-    )
-    .normalize();
+  // Calculate arrow direction and position
+  const start = new THREE.Vector3(...sourceNode.position);
+  const end = new THREE.Vector3(...targetNode.position);
+  const direction = new THREE.Vector3().subVectors(end, start);
+  const length = direction.length();
+  direction.normalize();
   
-  const arrowPos = new THREE.Vector3(...sourceNode.position).add(
-    direction.multiplyScalar(
-      new THREE.Vector3(...sourceNode.position).distanceTo(
-        new THREE.Vector3(...targetNode.position)
-      ) * 0.8
-    )
-  );
+  // Position arrow 85% along the line
+  const arrowPos = start.clone().add(direction.clone().multiplyScalar(length * 0.85));
+  
+  // Calculate rotation to point arrow towards target
+  const axis = new THREE.Vector3(0, 1, 0);
+  const quaternion = new THREE.Quaternion().setFromUnitVectors(axis, direction);
 
   return (
     <group>
       <Line
         points={points}
         color={color}
-        lineWidth={isHighlighted ? 3 : 1.5}
+        lineWidth={lineWidth}
         transparent
         opacity={opacity}
       />
-      {/* Arrow head */}
-      <mesh position={arrowPos.toArray()}>
-        <coneGeometry args={[0.3, 0.6, 8]} />
+      {/* Sleek arrow head */}
+      <mesh position={arrowPos.toArray()} quaternion={quaternion}>
+        <coneGeometry args={[0.25, 0.8, 8]} />
         <meshStandardMaterial
           color={color}
           emissive={color}
-          emissiveIntensity={0.3}
+          emissiveIntensity={isHighlighted ? 0.8 : 0.4}
           transparent
           opacity={opacity}
+          metalness={0.5}
+          roughness={0.3}
         />
       </mesh>
     </group>
@@ -238,8 +246,12 @@ interface Graph3DProps {
 
 export default function Graph3D({ nodes, edges }: Graph3DProps) {
   return (
-    <div className="w-full h-full">
-      <Canvas>
+    <div className="w-full h-full bg-black">
+      <Canvas
+        style={{ background: '#000000' }}
+        gl={{ alpha: false, antialias: true }}
+      >
+        <color attach="background" args={['#000000']} />
         <Graph3DScene nodes={nodes} edges={edges} />
       </Canvas>
     </div>

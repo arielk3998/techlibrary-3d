@@ -59,56 +59,56 @@ export default function SearchBar() {
   const hasActiveFilters = searchQuery || filterTags.length > 0 || filterDomains.length > 0;
 
   return (
-    <div className="absolute top-4 left-4 z-10 w-96 max-w-[calc(100vw-2rem)]">
+    <div className="absolute top-24 left-6 z-20 w-96 max-w-[calc(100vw-3rem)]">
       {/* Search Input */}
-      <div className="bg-gray-900/90 backdrop-blur-sm border border-gray-700 rounded-lg shadow-lg">
-        <div className="flex items-center gap-2 p-3">
-          <Search className="w-5 h-5 text-gray-400 flex-shrink-0" />
+      <div className="bg-black/40 backdrop-blur-xl border border-gray-800/50 rounded-2xl shadow-2xl">
+        <div className="flex items-center gap-2 p-4">
+          <Search className="w-5 h-5 text-purple-400 flex-shrink-0" />
           <input
             type="text"
             placeholder="Search nodes..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="flex-1 bg-transparent text-white placeholder-gray-500 outline-none"
+            className="flex-1 bg-transparent text-white placeholder-gray-500 outline-none text-sm"
           />
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className={`p-2 rounded hover:bg-gray-700 transition-colors ${
-              showFilters ? 'bg-gray-700' : ''
+            className={`p-2 rounded-lg hover:bg-gray-700/50 transition-all ${
+              showFilters ? 'bg-gray-700/50' : ''
             }`}
             aria-label="Toggle filters"
           >
-            <Filter className="w-4 h-4 text-gray-400" />
+            <Filter className="w-4 h-4 text-purple-400" />
           </button>
           {hasActiveFilters && (
             <button
               onClick={resetFilters}
-              className="p-2 rounded hover:bg-gray-700 transition-colors"
+              className="p-2 rounded-lg hover:bg-red-500/20 transition-all"
               aria-label="Clear filters"
             >
-              <X className="w-4 h-4 text-gray-400" />
+              <X className="w-4 h-4 text-red-400" />
             </button>
           )}
         </div>
 
         {/* Filter Panel */}
         {showFilters && (
-          <div className="border-t border-gray-700 p-3 space-y-4 max-h-96 overflow-y-auto">
+          <div className="border-t border-gray-800/50 p-4 space-y-4 max-h-96 overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-200">
             {/* Domain Filters */}
             <div>
-              <div className="flex items-center gap-2 mb-2">
-                <Folder className="w-4 h-4 text-gray-400" />
-                <h3 className="text-sm font-semibold text-gray-300">Domains</h3>
+              <div className="flex items-center gap-2 mb-3">
+                <Folder className="w-4 h-4 text-purple-400" />
+                <h3 className="text-xs font-semibold text-purple-400 uppercase tracking-wider">Domains</h3>
               </div>
               <div className="flex flex-wrap gap-2">
                 {allDomains.map((domain) => (
                   <button
                     key={domain}
                     onClick={() => toggleDomain(domain)}
-                    className={`px-3 py-1 rounded-full text-xs transition-colors ${
+                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                       filterDomains.includes(domain)
-                        ? 'bg-cyan-500 text-white'
-                        : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                        ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-500/30'
+                        : 'bg-gray-800/60 text-gray-300 hover:bg-gray-700/60 border border-gray-700/50'
                     }`}
                   >
                     {domain}
@@ -119,19 +119,19 @@ export default function SearchBar() {
 
             {/* Tag Filters */}
             <div>
-              <div className="flex items-center gap-2 mb-2">
-                <Tag className="w-4 h-4 text-gray-400" />
-                <h3 className="text-sm font-semibold text-gray-300">Tags</h3>
+              <div className="flex items-center gap-2 mb-3">
+                <Tag className="w-4 h-4 text-pink-400" />
+                <h3 className="text-xs font-semibold text-pink-400 uppercase tracking-wider">Tags</h3>
               </div>
-              <div className="flex flex-wrap gap-2 max-h-48 overflow-y-auto">
+              <div className="flex flex-wrap gap-2 max-h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent">
                 {allTags.slice(0, 50).map((tag) => (
                   <button
                     key={tag}
                     onClick={() => toggleTag(tag)}
-                    className={`px-3 py-1 rounded-full text-xs transition-colors ${
+                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                       filterTags.includes(tag)
-                        ? 'bg-cyan-500 text-white'
-                        : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                        ? 'bg-gradient-to-r from-pink-500 to-cyan-500 text-white shadow-lg shadow-pink-500/30'
+                        : 'bg-gray-800/60 text-gray-300 hover:bg-gray-700/60 border border-gray-700/50'
                     }`}
                   >
                     {tag}
@@ -145,7 +145,7 @@ export default function SearchBar() {
 
       {/* Active Filters Display */}
       {hasActiveFilters && (
-        <div className="mt-2 bg-gray-900/90 backdrop-blur-sm border border-gray-700 rounded-lg shadow-lg p-3">
+        <div className="mt-3 bg-black/40 backdrop-blur-xl border border-gray-800/50 rounded-2xl shadow-2xl p-3">
           <div className="flex flex-wrap gap-2">
             {filterDomains.map((domain) => (
               <span

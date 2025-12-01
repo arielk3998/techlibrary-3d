@@ -1,37 +1,37 @@
 import type { GraphNode, GraphEdge, GraphData, ResourceManifestEntry } from '@/types';
 
-// Domain color mapping for visual distinction
+// Vibrant prismatic color palette for domains - Prism Writing theme
 const DOMAIN_COLORS: Record<string, string> = {
-  'Languages': '#FF6B6B',
-  'Algorithms': '#4ECDC4',
-  'OperatingSystems': '#45B7D1',
-  'Standards': '#96CEB4',
-  'Tools': '#FFEAA7',
-  'SystemDesign': '#DDA15E',
-  'Databases': '#BC6C25',
-  'DevOps': '#606C38',
-  'Security': '#E63946',
-  'AI-ML': '#A8DADC',
-  'Desktop': '#457B9D',
-  'Networking': '#1D3557',
-  'Cloud': '#F1FAEE',
-  'Mobile': '#E76F51',
-  'Web': '#2A9D8F',
-  'Testing': '#E9C46A',
-  'Performance': '#F4A261',
-  'Graphics': '#264653',
-  'Data': '#7209B7',
-  'DistributedSystems': '#560BAD',
-  'ProjectTemplates': '#B5179E',
-  'SoftwareEngineering': '#F72585',
-  'Mathematics': '#4CC9F0',
-  'Environment': '#4895EF',
+  'Languages': '#a855f7',           // Purple
+  'Algorithms': '#ec4899',          // Pink
+  'OperatingSystems': '#06b6d4',    // Cyan
+  'Standards': '#8b5cf6',           // Violet
+  'Tools': '#d946ef',               // Fuchsia
+  'SystemDesign': '#0ea5e9',        // Sky Blue
+  'Databases': '#6366f1',           // Indigo
+  'DevOps': '#14b8a6',              // Teal
+  'Security': '#f43f5e',            // Rose
+  'AI-ML': '#c026d3',               // Magenta
+  'Desktop': '#2dd4bf',             // Light Teal
+  'Networking': '#3b82f6',          // Blue
+  'Cloud': '#22d3ee',               // Bright Cyan
+  'Mobile': '#e879f9',              // Pink Purple
+  'Web': '#a78bfa',                 // Light Purple
+  'Testing': '#06b6d4',             // Cyan
+  'Performance': '#f472b6',         // Hot Pink
+  'Graphics': '#818cf8',            // Periwinkle
+  'Data': '#38bdf8',                // Light Blue
+  'DistributedSystems': '#c084fc',  // Lavender
+  'ProjectTemplates': '#fb7185',    // Pink Red
+  'SoftwareEngineering': '#4ade80', // Green
+  'Mathematics': '#fbbf24',         // Amber
+  'Environment': '#34d399',         // Emerald
 };
 
 function getColorForDomain(domain: string): string {
   // Normalize domain name
   const normalized = domain.replace(/^\d+_/, '').replace(/-/g, '');
-  return DOMAIN_COLORS[normalized] || '#888888';
+  return DOMAIN_COLORS[normalized] || '#e879f9'; // Default to pink purple
 }
 
 function getNodeSize(type: string): number {

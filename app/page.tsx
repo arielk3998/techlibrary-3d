@@ -2,17 +2,30 @@
 
 import React, { useEffect, useState, useMemo } from 'react';
 import dynamic from 'next/dynamic';
-import { Loader2, Box } from 'lucide-react';
+import { Loader2, Box, Sun, Moon } from 'lucide-react';
 import { useGraphStore } from '@/store/useGraphStore';
 import SearchBar from '@/components/SearchBar';
 import ContentViewer from '@/components/ContentViewer';
 import CoverageDashboard from '@/components/CoverageDashboard';
+import PositionEditor from '@/components/PositionEditor';
+import LoadingTracker from '@/components/LoadingTracker';
 import { loadResourceManifest } from '@/lib/dataLoader';
 import { parseManifestToGraph, filterGraph } from '@/lib/graphParser';
-import type { ResourceManifestEntry } from '@/types';
+import { categorizeNode, formatNodeLabel, calculateNodeSize } from '@/lib/nodeColoringRules';
+import { logger } from '@/lib/logger';
+import type { ResourceManifestEntry, GraphData } from '@/types';
 
 // Dynamically import Graph3D to avoid SSR issues with Three.js
 const Graph3D = dynamic(() => import('@/components/Graph3D'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex items-center justify-center h-full">
+      <Loader2 className="w-12 h-12 text-cyan-400 animate-spin" />
+    </div>
+  ),
+});
+
+const Graph2D = dynamic(() => import('@/components/Graph2D'), {
   ssr: false,
   loading: () => (
     <div className="flex items-center justify-center h-full">
@@ -32,50 +45,117 @@ export default function Home() {
     setMode,
     isLoading,
     setLoading,
+    theme,
+    setTheme,
   } = useGraphStore();
 
   const [error, setError] = useState<string | null>(null);
+  const [showLoadingTracker, setShowLoadingTracker] = useState(true);
+
+  // Apply theme to document
+  useEffect(() => {
+    logger.info('Setting theme:', theme);
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  // Hide loading tracker after data loads
+  useEffect(() => {
+    if (!isLoading && graphData) {
+      logger.success('Graph data loaded, hiding tracker in 2s');
+      setTimeout(() => {
+        setShowLoadingTracker(false);
+        logger.summary();
+      }, 2000);
+    }
+  }, [isLoading, graphData]);
 
   // Load data on mount
   useEffect(() => {
-    setLoading(true);
+    let mounted = true;
     
-    // Try to load real Obsidian graph data first
-    fetch('/data/GRAPH_DATA.json')
-      .then((response) => {
+    const loadData = async () => {
+      if (!mounted) return;
+      logger.info('Starting data load...');
+      setLoading(true);
+      
+      try {
+        // Try to load real Obsidian graph data first
+        logger.info('Fetching graph data...');
+        const response = await fetch('/data/GRAPH_DATA.json');
         if (response.ok) {
-          return response.json();
-        }
-        throw new Error('No graph data found');
-      })
-      .then((realGraphData: GraphData) => {
-        console.log('📊 Loaded real Obsidian data:', realGraphData.nodes.length, 'nodes');
-        setGraphData(realGraphData);
-        setLoading(false);
-      })
-      .catch(() => {
-        // Fallback to manifest or mock data
-        loadResourceManifest()
-          .then((manifest: ResourceManifestEntry[]) => {
-            if (manifest && manifest.length > 0) {
-              const graph = parseManifestToGraph(manifest);
-              setGraphData(graph);
-            } else {
-              // Use mock data if manifest is not available
-              const mockGraph = generateMockGraph();
-              setGraphData(mockGraph);
-            }
-          })
-          .catch((err) => {
-            console.error('Error loading manifest:', err);
-            setError('Failed to load data. Using mock data.');
-            const mockGraph = generateMockGraph();
-            setGraphData(mockGraph);
-          })
-          .finally(() => {
-            setLoading(false);
+          logger.success('Graph data fetched successfully');
+          const realGraphData: GraphData = await response.json();
+          logger.info('Loaded real Obsidian data:', realGraphData.nodes.length, 'nodes,', realGraphData.edges.length, 'edges');
+          
+          // Apply coloring rules to all nodes
+          const enhancedNodes = realGraphData.nodes.map(node => {
+            const { color, category, description } = categorizeNode(node.label, node.category);
+            const formattedLabel = formatNodeLabel(node.label);
+            const edgeCount = realGraphData.edges.filter(e => e.source === node.id || e.target === node.id).length;
+            const isImportant = node.size ? node.size > 1.5 : false;
+            const size = calculateNodeSize(edgeCount, isImportant);
+            
+            return {
+              ...node,
+              label: formattedLabel,
+              color,
+              category,
+              size,
+              metadata: {
+                ...node.metadata,
+                categoryDescription: description,
+                originalLabel: node.label,
+                connectionCount: edgeCount,
+              }
+            };
           });
-      });
+          
+          if (mounted) {
+            logger.success('Setting enhanced graph data');
+            setGraphData({ ...realGraphData, nodes: enhancedNodes });
+            logger.success('Data load complete');
+            setLoading(false);
+          }
+          return;
+        }
+      } catch (err) {
+        logger.warn('No graph data found, trying manifest...', err);
+      }
+      
+      // Fallback to manifest or mock data
+      try {
+        logger.info('Loading resource manifest...');
+        const manifest = await loadResourceManifest();
+        if (manifest && manifest.length > 0 && mounted) {
+          logger.success('Manifest loaded:', manifest.length, 'resources');
+          const graph = parseManifestToGraph(manifest);
+          setGraphData(graph);
+        } else if (mounted) {
+          logger.warn('Falling back to mock data');
+          const mockGraph = generateMockGraph();
+          setGraphData(mockGraph);
+        }
+      } catch (err) {
+        logger.error('Error loading manifest:', err);
+        if (mounted) {
+          logger.warn('Using mock data as final fallback');
+          setError('Failed to load data. Using mock data.');
+          const mockGraph = generateMockGraph();
+          setGraphData(mockGraph);
+        }
+      } finally {
+        if (mounted) {
+          logger.info('Stopping loading state');
+          setLoading(false);
+        }
+      }
+    };
+    
+    loadData();
+    
+    return () => {
+      mounted = false;
+    };
   }, [setGraphData, setLoading]);
 
   // Filter graph based on search and filters
@@ -103,34 +183,51 @@ export default function Home() {
   return (
     <div className="relative w-full h-screen bg-black overflow-hidden">
       {/* Main Graph Visualization - Behind everything */}
-      <div className="absolute inset-0 w-full h-full">
+      <div className="absolute inset-0 w-full h-full bg-black">
         {isLoading ? (
-          <div className="flex items-center justify-center h-full">
+          <div className="flex items-center justify-center h-full bg-black">
             <div className="text-center">
-              <Loader2 className="w-16 h-16 text-cyan-400 animate-spin mx-auto mb-4" />
-              <p className="text-white text-lg">Loading TechLibrary Graph...</p>
+              <Loader2 className="w-16 h-16 text-purple-400 animate-spin mx-auto mb-4" />
+              <p className="text-white text-lg">Loading Knowledge Graph...</p>
             </div>
           </div>
         ) : filteredGraph && filteredGraph.nodes.length > 0 ? (
-          <Graph3D nodes={filteredGraph.nodes} edges={filteredGraph.edges} />
+          mode === '3d' ? (
+            <Graph3D nodes={filteredGraph.nodes} edges={filteredGraph.edges} />
+          ) : (
+            <Graph2D nodes={filteredGraph.nodes} edges={filteredGraph.edges} />
+          )
         ) : (
-          <div className="flex items-center justify-center h-full">
+          <div className="flex items-center justify-center h-full bg-black">
             <p className="text-white text-lg">No nodes match your filters</p>
           </div>
         )}
       </div>
 
       {/* Header */}
-      <div className="absolute top-0 left-0 right-0 z-20 bg-gradient-to-b from-black/80 to-transparent p-4 pointer-events-none">
-        <div className="flex items-center justify-between max-w-7xl mx-auto pointer-events-auto">
-          <div className="flex items-center gap-3">
-            <Box className="w-8 h-8 text-cyan-400" />
-            <h1 className="text-2xl font-bold text-white">TechLibrary 3D</h1>
+      <div className="absolute top-0 left-0 right-0 z-20 pointer-events-none">
+        <div className="flex items-center justify-between p-6 pointer-events-auto">
+          <div className="flex items-center gap-3 bg-black/60 backdrop-blur-xl border border-purple-900/50 rounded-2xl px-6 py-3 shadow-2xl shadow-purple-500/20">
+            <Box className="w-7 h-7 text-purple-400" />
+            <h1 className="text-xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent tracking-tight">Prism Writing</h1>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            {/* Theme Toggle */}
+            <button
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="px-4 py-2.5 bg-black/60 backdrop-blur-xl border border-purple-900/50 hover:border-pink-500/50 rounded-xl transition-all duration-200 shadow-lg"
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? (
+                <Sun className="w-5 h-5 text-yellow-400" />
+              ) : (
+                <Moon className="w-5 h-5 text-purple-400" />
+              )}
+            </button>
+            {/* View Mode Toggle */}
             <button
               onClick={() => setMode(mode === '3d' ? '2d' : '3d')}
-              className="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors text-sm"
+              className="px-5 py-2.5 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 hover:from-purple-600 hover:via-pink-600 hover:to-cyan-600 text-white rounded-xl transition-all duration-200 text-sm font-semibold shadow-lg hover:shadow-purple-500/50"
             >
               {mode === '3d' ? '2D View' : '3D View'}
             </button>
@@ -147,15 +244,37 @@ export default function Home() {
       {/* Coverage Dashboard */}
       <CoverageDashboard />
 
+      {/* Position Editor Modal */}
+      <PositionEditor />
+
+      {/* Loading Tracker */}
+      <LoadingTracker isVisible={showLoadingTracker} />
+
       {/* Instructions Overlay */}
       {!isLoading && graphData && (
-        <div className="absolute bottom-4 left-4 z-10 bg-gray-900/90 backdrop-blur-sm border border-gray-700 rounded-lg p-3 max-w-xs text-sm text-gray-300 pointer-events-none">
-          <p className="font-semibold mb-1">Controls:</p>
-          <ul className="space-y-1 text-xs">
-            <li>• Click and drag to rotate</li>
-            <li>• Scroll to zoom</li>
-            <li>• Click nodes to view content</li>
-            <li>• Hover to highlight connections</li>
+        <div className="absolute bottom-6 left-6 z-10 bg-black/40 backdrop-blur-xl border border-purple-900/50 rounded-2xl p-4 max-w-xs pointer-events-none shadow-2xl shadow-purple-500/10">
+          <p className="font-semibold mb-2 text-purple-400 text-sm">Controls</p>
+          <ul className="space-y-2 text-xs text-gray-300">
+            <li className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"></span>
+              <span>{mode === '3d' ? 'Click and drag to rotate' : 'Drag to pan'}</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 bg-gradient-to-r from-pink-400 to-cyan-400 rounded-full"></span>
+              <span>Scroll to zoom</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full"></span>
+              <span>Click nodes to view content</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"></span>
+              <span>Hover to highlight connections</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 bg-gradient-to-r from-pink-400 to-cyan-400 rounded-full"></span>
+              <span>Double-click nodes to edit position</span>
+            </li>
           </ul>
         </div>
       )}

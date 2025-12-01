@@ -24,6 +24,9 @@ export interface GraphNode {
     tags?: string[];
     description?: string;
     domain?: string;
+    categoryDescription?: string;
+    originalLabel?: string;
+    connectionCount?: number;
   };
 }
 
@@ -57,7 +60,12 @@ export interface ViewState {
 
 export interface MarkdownContent {
   content: string;
-  title: string;
-  path: string;
+  title?: string;
+  path?: string;
   metadata?: Record<string, any>;
+  frontmatter?: {
+    title: string;
+    category: string;
+    type: string;
+  };
 }

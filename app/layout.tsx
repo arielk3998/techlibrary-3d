@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TechLibrary 3D - Interactive Knowledge Graph",
-  description: "Explore the complete TechLibrary repository as an interactive 3D knowledge graph with 23 technical domains and 300+ resources.",
+  title: "Prism Writing - Interactive Knowledge Graph",
+  description: "Explore ideas, connections, and knowledge through an interactive 3D visualization. Discover relationships between concepts, people, and events.",
 };
 
 export default function RootLayout({
