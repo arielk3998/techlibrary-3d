@@ -177,7 +177,7 @@ export default function Home() {
 
   if (error && !graphData) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-black text-white">
+      <div className="flex items-center justify-center min-h-screen bg-black text-white" style={{ backgroundColor: '#000000' }}>
         <div className="text-center">
           <p className="text-xl mb-4">{error}</p>
           <button
@@ -196,11 +196,11 @@ export default function Home() {
       {/* Main Graph Visualization - Always render to prevent white screen */}
       <div className="absolute inset-0 w-full h-full bg-black" style={{ backgroundColor: '#000000' }}>
         {filteredGraph && filteredGraph.nodes.length > 0 ? (
-          <div className="w-full h-full bg-black" style={{ backgroundColor: '#000000' }}>
+          <div className="w-full h-full bg-black" style={{ backgroundColor: '#000000' }} key="graph-container">
             {mode === '3d' ? (
-              <Graph3D nodes={filteredGraph.nodes} edges={filteredGraph.edges} />
+              <Graph3D key="graph-3d" nodes={filteredGraph.nodes} edges={filteredGraph.edges} />
             ) : (
-              <Graph2D nodes={filteredGraph.nodes} edges={filteredGraph.edges} />
+              <Graph2D key="graph-2d" nodes={filteredGraph.nodes} edges={filteredGraph.edges} />
             )}
           </div>
         ) : isLoading ? (

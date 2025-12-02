@@ -264,7 +264,7 @@ export default function ContentViewer() {
   }
 
   return (
-    <div className="fixed top-0 right-0 w-full md:w-1/3 h-full bg-gray-900 border-l border-gray-700 overflow-hidden z-50 flex flex-col">
+    <div className="fixed top-0 right-0 w-full md:w-1/3 h-full bg-gray-900 border-l border-gray-700 overflow-hidden z-50 flex flex-col" style={{ backgroundColor: '#111827' }}>
       {/* Header */}
       <div className="flex items-center justify-between p-4 border-b border-gray-700 bg-gray-800">
         <div className="flex items-center gap-2 flex-1 min-w-0">

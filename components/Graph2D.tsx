@@ -27,8 +27,14 @@ export default function Graph2D({ nodes, edges }: Graph2DProps) {
 
     // Set canvas size
     const resizeCanvas = () => {
-      canvas.width = canvas.clientWidth;
-      canvas.height = canvas.clientHeight;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = canvas.clientWidth * dpr;
+      canvas.height = canvas.clientHeight * dpr;
+      ctx.scale(dpr, dpr);
+      
+      // Immediately fill with black after resize
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
     const draw = () => {
@@ -244,10 +250,12 @@ export default function Graph2D({ nodes, edges }: Graph2DProps) {
   }, [nodes, edges, camera, selectedNode, hoveredNode, isDragging, dragStart]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="w-full h-full bg-black cursor-move"
-      style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
-    />
+    <div className="w-full h-full bg-black" style={{ backgroundColor: '#000000', position: 'relative' }}>
+      <canvas
+        ref={canvasRef}
+        className="w-full h-full bg-black cursor-move"
+        style={{ cursor: isDragging ? 'grabbing' : 'grab', backgroundColor: '#000000', display: 'block' }}
+      />
+    </div>
   );
 }

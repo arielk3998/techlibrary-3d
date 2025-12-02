@@ -30,8 +30,8 @@ export default function PositionEditor() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-      <div className="bg-gradient-to-br from-purple-900/90 via-pink-900/90 to-cyan-900/90 backdrop-blur-xl border border-purple-500/50 rounded-2xl p-6 shadow-2xl shadow-purple-500/30 max-w-md w-full mx-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)' }}>
+      <div className="bg-gradient-to-br from-purple-900/90 via-pink-900/90 to-cyan-900/90 backdrop-blur-xl border border-purple-500/50 rounded-2xl p-6 shadow-2xl shadow-purple-500/30 max-w-md w-full mx-4" style={{ backgroundColor: 'rgba(88, 28, 135, 0.9)' }}>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-bold bg-gradient-to-r from-purple-300 via-pink-300 to-cyan-300 bg-clip-text text-transparent">
             Edit Position: {node.label}
