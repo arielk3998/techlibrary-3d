@@ -35,6 +35,44 @@ const Graph2D = dynamic(() => import('@/components/Graph2D'), {
 });
 
 export default function Home() {
+  // Maintenance mode - return early
+  return (
+    <div className="fixed inset-0 flex items-center justify-center bg-black" style={{ backgroundColor: '#000000' }}>
+      <div className="max-w-2xl mx-4 text-center">
+        <div className="mb-8">
+          <div className="inline-block mb-6">
+            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-purple-500 via-pink-500 to-cyan-500 animate-pulse flex items-center justify-center">
+              <Box className="w-12 h-12 text-white" />
+            </div>
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent mb-4">
+            Prism Writing
+          </h1>
+          <h2 className="text-2xl md:text-3xl font-semibold text-white mb-6">
+            Under Maintenance
+          </h2>
+        </div>
+        
+        <div className="bg-gradient-to-br from-purple-900/30 via-pink-900/30 to-cyan-900/30 backdrop-blur-xl border border-purple-500/30 rounded-2xl p-8 shadow-2xl">
+          <p className="text-lg text-purple-200 mb-4">
+            We're currently performing scheduled maintenance to improve your experience.
+          </p>
+          <p className="text-md text-purple-300/80 mb-6">
+            Our knowledge graph visualization will be back online in approximately <span className="font-bold text-cyan-400">2 business days</span>.
+          </p>
+          <div className="flex items-center justify-center gap-2 text-sm text-purple-400/60">
+            <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+            <span>Estimated return: {new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</span>
+          </div>
+        </div>
+        
+        <p className="mt-8 text-sm text-purple-400/60">
+          Thank you for your patience and understanding.
+        </p>
+      </div>
+    </div>
+  );
+
   const {
     graphData,
     setGraphData,
