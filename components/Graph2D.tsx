@@ -34,7 +34,9 @@ export default function Graph2D({ nodes, edges }: Graph2DProps) {
     const draw = () => {
       if (!ctx || !canvas) return;
       
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // Fill with black instead of clearing to transparent (prevents white flash during drag)
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.save();
 
       // Apply camera transform

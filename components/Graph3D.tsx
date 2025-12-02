@@ -246,10 +246,10 @@ interface Graph3DProps {
 
 export default function Graph3D({ nodes, edges }: Graph3DProps) {
   return (
-    <div className="w-full h-full bg-black">
+    <div className="w-full h-full bg-black" style={{ backgroundColor: '#000000' }}>
       <Canvas
-        style={{ background: '#000000' }}
-        gl={{ alpha: false, antialias: true }}
+        style={{ background: '#000000', backgroundColor: '#000000' }}
+        gl={{ alpha: false, antialias: true, preserveDrawingBuffer: true }}
       >
         <color attach="background" args={['#000000']} />
         <Graph3DScene nodes={nodes} edges={edges} />

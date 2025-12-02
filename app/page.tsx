@@ -192,11 +192,11 @@ export default function Home() {
   }
 
   return (
-    <div className="fixed inset-0 w-screen h-screen bg-black overflow-hidden">
+    <div className="fixed inset-0 w-screen h-screen bg-black overflow-hidden" style={{ backgroundColor: '#000000' }}>
       {/* Main Graph Visualization - Always render to prevent white screen */}
-      <div className="absolute inset-0 w-full h-full bg-black">
+      <div className="absolute inset-0 w-full h-full bg-black" style={{ backgroundColor: '#000000' }}>
         {filteredGraph && filteredGraph.nodes.length > 0 ? (
-          <div className="w-full h-full bg-black">
+          <div className="w-full h-full bg-black" style={{ backgroundColor: '#000000' }}>
             {mode === '3d' ? (
               <Graph3D nodes={filteredGraph.nodes} edges={filteredGraph.edges} />
             ) : (
@@ -204,14 +204,14 @@ export default function Home() {
             )}
           </div>
         ) : isLoading ? (
-          <div className="flex items-center justify-center h-full bg-black">
+          <div className="flex items-center justify-center h-full bg-black" style={{ backgroundColor: '#000000' }}>
             <div className="text-center">
               <Loader2 className="w-12 h-12 sm:w-16 sm:h-16 text-purple-400 animate-spin mx-auto mb-4" />
               <p className="text-white text-sm sm:text-base lg:text-lg px-4">Loading Knowledge Graph...</p>
             </div>
           </div>
         ) : (
-          <div className="flex items-center justify-center h-full bg-black">
+          <div className="flex items-center justify-center h-full bg-black" style={{ backgroundColor: '#000000' }}>
             <p className="text-white text-sm sm:text-base lg:text-lg px-4">No nodes match your filters</p>
           </div>
         )}
