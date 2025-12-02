@@ -108,8 +108,8 @@ export default function LoadingTracker({ isVisible, onClose }: LoadingTrackerPro
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex items-center justify-center">
-      <div className="max-w-md w-full mx-4 relative">
+    <div className="fixed inset-0 z-30 bg-black/60 backdrop-blur-md flex items-center justify-center pointer-events-none">
+      <div className="max-w-md w-full mx-4 relative pointer-events-auto">
         {/* Close Button */}
         {onClose && (
           <button

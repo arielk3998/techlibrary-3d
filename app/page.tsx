@@ -19,7 +19,7 @@ import type { ResourceManifestEntry, GraphData } from '@/types';
 const Graph3D = dynamic(() => import('@/components/Graph3D'), {
   ssr: false,
   loading: () => (
-    <div className="flex items-center justify-center h-full">
+    <div className="flex items-center justify-center h-full bg-black">
       <Loader2 className="w-12 h-12 text-cyan-400 animate-spin" />
     </div>
   ),
@@ -28,7 +28,7 @@ const Graph3D = dynamic(() => import('@/components/Graph3D'), {
 const Graph2D = dynamic(() => import('@/components/Graph2D'), {
   ssr: false,
   loading: () => (
-    <div className="flex items-center justify-center h-full">
+    <div className="flex items-center justify-center h-full bg-black">
       <Loader2 className="w-12 h-12 text-cyan-400 animate-spin" />
     </div>
   ),
@@ -63,11 +63,9 @@ export default function Home() {
     if (isLoading) {
       setShowLoadingTracker(true);
     } else if (graphData) {
-      logger.success('Graph data loaded, hiding tracker in 2s');
-      setTimeout(() => {
-        setShowLoadingTracker(false);
-        logger.summary();
-      }, 2000);
+      logger.success('Graph data loaded, hiding tracker immediately');
+      setShowLoadingTracker(false);
+      logger.summary();
     }
   }, [isLoading, graphData]);
 
@@ -194,59 +192,69 @@ export default function Home() {
   }
 
   return (
-    <div className="relative w-full h-screen bg-black overflow-hidden">
-      {/* Main Graph Visualization - Behind everything */}
+    <div className="fixed inset-0 w-screen h-screen bg-black overflow-hidden">
+      {/* Main Graph Visualization - Always render to prevent white screen */}
       <div className="absolute inset-0 w-full h-full bg-black">
-        {isLoading ? (
+        {filteredGraph && filteredGraph.nodes.length > 0 ? (
+          <div className="w-full h-full bg-black">
+            {mode === '3d' ? (
+              <Graph3D nodes={filteredGraph.nodes} edges={filteredGraph.edges} />
+            ) : (
+              <Graph2D nodes={filteredGraph.nodes} edges={filteredGraph.edges} />
+            )}
+          </div>
+        ) : isLoading ? (
           <div className="flex items-center justify-center h-full bg-black">
             <div className="text-center">
-              <Loader2 className="w-16 h-16 text-purple-400 animate-spin mx-auto mb-4" />
-              <p className="text-white text-lg">Loading Knowledge Graph...</p>
+              <Loader2 className="w-12 h-12 sm:w-16 sm:h-16 text-purple-400 animate-spin mx-auto mb-4" />
+              <p className="text-white text-sm sm:text-base lg:text-lg px-4">Loading Knowledge Graph...</p>
             </div>
           </div>
-        ) : filteredGraph && filteredGraph.nodes.length > 0 ? (
-          mode === '3d' ? (
-            <Graph3D nodes={filteredGraph.nodes} edges={filteredGraph.edges} />
-          ) : (
-            <Graph2D nodes={filteredGraph.nodes} edges={filteredGraph.edges} />
-          )
         ) : (
           <div className="flex items-center justify-center h-full bg-black">
-            <p className="text-white text-lg">No nodes match your filters</p>
+            <p className="text-white text-sm sm:text-base lg:text-lg px-4">No nodes match your filters</p>
           </div>
         )}
       </div>
 
-      {/* Header */}
-      <div className="absolute top-0 left-0 right-0 z-20 pointer-events-none">
-        <div className="flex items-center justify-between p-6 pointer-events-auto">
-          <div className="flex items-center gap-3 bg-black/60 backdrop-blur-xl border border-purple-900/50 rounded-2xl px-6 py-3 shadow-2xl shadow-purple-500/20">
-            <Box className="w-7 h-7 text-purple-400" />
-            <h1 className="text-xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent tracking-tight">Prism Writing</h1>
+      {/* Header - Professional Design */}
+      <header className="absolute top-0 left-0 right-0 z-20 pointer-events-none">
+        <div className="flex items-center justify-between p-3 sm:p-4 lg:p-6 pointer-events-auto">
+          {/* Logo */}
+          <div className="flex items-center gap-2 sm:gap-3 bg-black/80 backdrop-blur-xl border border-white/10 rounded-xl sm:rounded-2xl px-3 py-2 sm:px-6 sm:py-3 shadow-2xl">
+            <Box className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-purple-400" />
+            <div>
+              <h1 className="text-base sm:text-lg lg:text-xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent tracking-tight leading-none">Prism Writing</h1>
+              <p className="text-[10px] sm:text-xs text-purple-300/60 mt-0.5">Knowledge Graph</p>
+            </div>
           </div>
-          <div className="flex items-center gap-3">
+          
+          {/* Controls */}
+          <div className="flex items-center gap-2 sm:gap-3">
             {/* Theme Toggle */}
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="px-4 py-2.5 bg-black/60 backdrop-blur-xl border border-purple-900/50 hover:border-pink-500/50 rounded-xl transition-all duration-200 shadow-lg"
+              className="p-2 sm:p-2.5 bg-black/80 backdrop-blur-xl border border-white/10 hover:border-purple-500/50 rounded-lg sm:rounded-xl transition-all duration-200 shadow-lg"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? (
-                <Sun className="w-5 h-5 text-yellow-400" />
+                <Sun className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400" />
               ) : (
-                <Moon className="w-5 h-5 text-purple-400" />
+                <Moon className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" />
               )}
             </button>
+            
             {/* View Mode Toggle */}
             <button
               onClick={() => setMode(mode === '3d' ? '2d' : '3d')}
-              className="px-5 py-2.5 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 hover:from-purple-600 hover:via-pink-600 hover:to-cyan-600 text-white rounded-xl transition-all duration-200 text-sm font-semibold shadow-lg hover:shadow-purple-500/50"
+              className="px-3 py-2 sm:px-5 sm:py-2.5 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 hover:from-purple-600 hover:via-pink-600 hover:to-cyan-600 text-white rounded-lg sm:rounded-xl transition-all duration-200 text-xs sm:text-sm font-semibold shadow-lg hover:shadow-purple-500/50"
             >
-              {mode === '3d' ? '2D View' : '3D View'}
+              <span className="hidden sm:inline">{mode === '3d' ? '2D View' : '3D View'}</span>
+              <span className="sm:hidden">{mode === '3d' ? '2D' : '3D'}</span>
             </button>
           </div>
         </div>
-      </div>
+      </header>
 
       {/* Search Bar */}
       <SearchBar />

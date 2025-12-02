@@ -1,39 +1,62 @@
 @import "tailwindcss";
 
+/* Global reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Dark theme (default) */
+/* Ensure black background is ALWAYS present - prevents white screen */
+html {
+  background-color: #000000 !important;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+body {
+  background-color: #000000 !important;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* Theme transitions */
 html,
-body,
-#__next,
-main {
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  width: 100% !important;
-  height: 100% !important;
+body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Dark theme (default) - BLACK background */
 html[data-theme="dark"],
-html[data-theme="dark"] body {
-  background: #000000 !important;
-  color: #ededed !important;
+html[data-theme="dark"] body,
+body {
+  background-color: #000000 !important;
+  color: #ededed;
 }
 
+/* Light theme - Light gray background */
 html[data-theme="light"],
 html[data-theme="light"] body {
-  background: #f8fafc !important;
-  color: #1e293b !important;
+  background-color: #f8fafc !important;
+  color: #1e293b;
 }
 
+/* CSS Variables */
 :root {
   --background: #000000;
   --foreground: #ededed;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
 }
 
 :root[data-theme="light"] {
@@ -41,18 +64,32 @@ html[data-theme="light"] body {
   --foreground: #1e293b;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Prevent any child from creating white background */
+#__next,
+main,
+[id^="root"] {
+  background-color: transparent !important;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  height: 100%;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+/* Text scaling for responsive design */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1025px) {
+  html {
+    font-size: 16px;
+  }
 }
