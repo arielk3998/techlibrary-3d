@@ -50,7 +50,7 @@ export default function Home() {
   } = useGraphStore();
 
   const [error, setError] = useState<string | null>(null);
-  const [showLoadingTracker, setShowLoadingTracker] = useState(true);
+  const [showLoadingTracker, setShowLoadingTracker] = useState(false);
 
   // Apply theme to document
   useEffect(() => {
@@ -58,9 +58,11 @@ export default function Home() {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
-  // Hide loading tracker after data loads
+  // Control loading tracker visibility
   useEffect(() => {
-    if (!isLoading && graphData) {
+    if (isLoading) {
+      setShowLoadingTracker(true);
+    } else if (graphData) {
       logger.success('Graph data loaded, hiding tracker in 2s');
       setTimeout(() => {
         setShowLoadingTracker(false);
@@ -68,6 +70,17 @@ export default function Home() {
       }, 2000);
     }
   }, [isLoading, graphData]);
+
+  // Safety timeout - hide tracker after 10 seconds no matter what
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (showLoadingTracker) {
+        logger.warn('Loading tracker auto-hidden after 10s timeout');
+        setShowLoadingTracker(false);
+      }
+    }, 10000);
+    return () => clearTimeout(timeout);
+  }, [showLoadingTracker]);
 
   // Load data on mount
   useEffect(() => {
@@ -248,7 +261,13 @@ export default function Home() {
       <PositionEditor />
 
       {/* Loading Tracker */}
-      <LoadingTracker isVisible={showLoadingTracker} />
+      <LoadingTracker 
+        isVisible={showLoadingTracker} 
+        onClose={() => {
+          setShowLoadingTracker(false);
+          logger.warn('Loading tracker manually closed by user');
+        }}
+      />
 
       {/* Instructions Overlay */}
       {!isLoading && graphData && (

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useMemo } from 'react';
-import { CheckCircle2, Circle, Loader2, AlertCircle } from 'lucide-react';
+import { CheckCircle2, Circle, Loader2, AlertCircle, X } from 'lucide-react';
 
 interface LoadingStep {
   id: string;
@@ -13,9 +13,10 @@ interface LoadingStep {
 
 interface LoadingTrackerProps {
   isVisible: boolean;
+  onClose?: () => void;
 }
 
-export default function LoadingTracker({ isVisible }: LoadingTrackerProps) {
+export default function LoadingTracker({ isVisible, onClose }: LoadingTrackerProps) {
   const [steps, setSteps] = useState<LoadingStep[]>([
     { id: 'init', label: 'Initializing application', status: 'pending' },
     { id: 'theme', label: 'Loading theme system', status: 'pending' },
@@ -108,7 +109,18 @@ export default function LoadingTracker({ isVisible }: LoadingTrackerProps) {
 
   return (
     <div className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex items-center justify-center">
-      <div className="max-w-md w-full mx-4">
+      <div className="max-w-md w-full mx-4 relative">
+        {/* Close Button */}
+        {onClose && (
+          <button
+            onClick={onClose}
+            className="absolute -top-2 -right-2 z-10 w-8 h-8 bg-red-500/80 hover:bg-red-500 rounded-full flex items-center justify-center text-white transition-colors"
+            aria-label="Close loading tracker"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        )}
+        
         {/* Logo */}
         <div className="text-center mb-8">
           <div className="inline-block mb-4">
