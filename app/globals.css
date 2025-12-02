@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* CRITICAL: Override Tailwind preflight white background IMMEDIATELY */
+html,
+body {
+  background-color: #000000 !important;
+}
+
 /* Global reset */
 * {
   margin: 0;
@@ -40,15 +46,21 @@ body {
 /* Dark theme (default) - BLACK background */
 html[data-theme="dark"],
 html[data-theme="dark"] body,
+html:not([data-theme]),
+html:not([data-theme]) body,
 body {
   background-color: #000000 !important;
   color: #ededed;
 }
 
-/* Light theme - Light gray background */
-html[data-theme="light"],
+/* Light theme - Light gray background - ONLY when explicitly set */
+html[data-theme="light"] {
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
 html[data-theme="light"] body {
-  background-color: #f8fafc !important;
+  background-color: #f8fafc;
   color: #1e293b;
 }
 
